@@ -41,6 +41,36 @@
       color: #3498db;
     }
 
+    /* SIDEBAR */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 70px;
+      width: 220px;
+      height: 100%;
+      background-color: #2c3e50;
+      padding: 20px;
+      color: white;
+    }
+
+    .sidebar h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 15px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+
     /* HEADER (inchangé) */
     header {
       background-image: url('des-bureaux-d-affaires-futuristes.jpg');
@@ -68,8 +98,10 @@
       text-shadow: 2px 2px 5px black;
     }
 
+    /* MAIN (ajout marge gauche) */
     main {
       padding: 30px;
+      margin-left: 240px;
     }
 
     h1, h2 {
@@ -107,6 +139,15 @@
   </ul>
 </nav>
 
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Menu</h2>
+  <a href="#missions">Missions en Entreprise</a>
+  <a href="#diplomes">Diplômes et Certifications</a>
+  <a href="#projets">Projets Professionnels</a>
+  <a href="#veille">Veille Technologique</a>
+</div>
+
 <header>
   <h1>CARIOU Virginie BTS SIO SISR Portefolio</h1>
 </header>
@@ -118,12 +159,24 @@
   <p>Je suis étudiante en BTS SIO SISR.</p>
 </section>
 
-<section class="card">
-  <h2>Mes projets</h2>
-  <ul>
-    <li>Projet réseau</li>
-    <li>Projet Linux</li>
-  </ul>
+<section id="missions" class="card">
+  <h2>Missions en Entreprise</h2>
+  <p>À compléter</p>
+</section>
+
+<section id="diplomes" class="card">
+  <h2>Diplômes et Certifications</h2>
+  <p>À compléter</p>
+</section>
+
+<section id="projets" class="card">
+  <h2>Projets Professionnels</h2>
+  <p>À compléter</p>
+</section>
+
+<section id="veille" class="card">
+  <h2>Veille Technologique</h2>
+  <p>À compléter</p>
 </section>
 
 <section id="tableau" class="card">
