@@ -12,6 +12,36 @@
       padding: 0;
     }
 
+    /* NAVBAR */
+    nav {
+      background-color: white;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #3498db;
+    }
+
+    /* HEADER (inchangé) */
     header {
       background-image: url('des-bureaux-d-affaires-futuristes.jpg');
       background-size: cover;
@@ -67,14 +97,24 @@
 
 <body>
 
+<!-- NAVBAR -->
+<nav>
+  <ul>
+    <li><a href="#">Accueil</a></li>
+    <li><a href="#parcours">Mon Parcours</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#tableau">Tableau de Synthèse</a></li>
+  </ul>
+</nav>
+
 <header>
   <h1>CARIOU Virginie BTS SIO SISR Portefolio</h1>
 </header>
 
 <main>
 
-<section class="card">
-  <h2>Présentation</h2>
+<section id="parcours" class="card">
+  <h2>Présentation / Mon Parcours</h2>
   <p>Je suis étudiante en BTS SIO SISR.</p>
 </section>
 
@@ -86,7 +126,12 @@
   </ul>
 </section>
 
-<section class="card">
+<section id="tableau" class="card">
+  <h2>Tableau de Synthèse</h2>
+  <p>À compléter</p>
+</section>
+
+<section id="contact" class="card">
   <h2>Contact</h2>
   <p>Email : Virginie04.c@gmail.com</p>
 </section>
