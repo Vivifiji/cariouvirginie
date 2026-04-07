@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>CARIOU Virginie - Portfolio - BTS SIO SISR</title>
 
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -80,13 +81,22 @@
     }
 
     .sidebar a {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       color: white;
       text-decoration: none;
-      margin: 15px 0;
-      padding: 10px;
+      margin: 10px 0;
+      padding: 10px 12px;
       border-radius: 5px;
-      font-size: 20px;
+      font-size: 17px;
+    }
+
+    .sidebar a svg {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      stroke: white;
     }
 
     .sidebar a:hover {
@@ -203,10 +213,10 @@
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-  <a href="#missions">Missions en Entreprise</a>
-  <a href="#diplomes">Diplômes et Certifications</a>
-  <a href="#projets">Projets Professionnels</a>
-  <a href="#veille">Veille Technologique</a>
+  <a href="#missions"><i data-lucide="briefcase"></i> Missions en Entreprise</a>
+  <a href="#diplomes"><i data-lucide="graduation-cap"></i> Diplômes et Certifications</a>
+  <a href="#projets"><i data-lucide="folder-open"></i> Projets Professionnels</a>
+  <a href="#veille"><i data-lucide="shield"></i> Veille Technologique</a>
 </div>
 
 <header>
@@ -245,6 +255,8 @@
   function toggleMenu() {
     document.querySelector('.sidebar').classList.toggle('active');
   }
+
+  lucide.createIcons();
 
   document.addEventListener('click', function(e) {
     const sidebar = document.querySelector('.sidebar');
