@@ -200,7 +200,7 @@ fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.google.com/alert
   .then(data => {
     let html = "";
 
-    data.items.slice(0, 5).forEach(item => {
+    data.items.slice(0, 4).forEach(item => {
       html += `
         <div class="rss-item">
           <a href="${item.link}" target="_blank">
