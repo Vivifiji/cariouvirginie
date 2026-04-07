@@ -18,9 +18,8 @@
       padding: 15px 0;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 3000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      position: sticky; /* garde sticky */
     }
 
     nav > div.nav-wrapper {
@@ -320,7 +319,13 @@
   document.addEventListener('click', function(e) {
     const sidebar = document.querySelector('.sidebar');
     const menuBtn = document.querySelector('.menu-btn');
-    if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+    const navBar = document.querySelector('nav');
+    if (
+      sidebar.classList.contains('active') &&
+      !sidebar.contains(e.target) &&
+      !menuBtn.contains(e.target) &&
+      !navBar.contains(e.target)
+    ) {
       sidebar.classList.remove('active');
     }
   });
