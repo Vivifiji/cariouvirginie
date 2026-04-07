@@ -272,5 +272,24 @@ fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.google.com/alert
   });
 </script>
 
+  <!-- BOUTON MENU -->
+<div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+
+<script>
+  document.addEventListener("click", function(event) {
+    const sidebar = document.querySelector(".sidebar");
+    const menuBtn = document.querySelector(".menu-btn");
+
+    // Si la sidebar est ouverte
+    if (sidebar.classList.contains("active")) {
+
+      // Si le clic n'est NI dans la sidebar NI sur le bouton menu
+      if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+        sidebar.classList.remove("active");
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
