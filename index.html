@@ -55,11 +55,6 @@
       border-radius: 8px;
       backdrop-filter: blur(5px);
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      transition: 0.2s;
-    }
-
-    .menu-btn:hover {
-      transform: scale(1.05);
     }
 
     /* SIDEBAR */
@@ -103,8 +98,11 @@
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.5);
+
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
+
       transition: 0.3s;
       z-index: 2000;
     }
@@ -112,6 +110,7 @@
     .overlay.active {
       opacity: 1;
       visibility: visible;
+      pointer-events: auto;
     }
 
     /* HEADER */
@@ -206,9 +205,10 @@
 <!-- NAVBAR -->
 <nav>
   <ul>
-    <li><a href="#">Accueil</a></li>
-    <li><a href="#">Mon Parcours Professionnel</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="mon-parcours-pro.html">Mon Parcours Professionnel</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="e5-tableau-de-synthese.pdf" target="_blank">Tableau de Synthèse</a></li>
   </ul>
 </nav>
 
@@ -218,24 +218,24 @@
 
 <main>
 
-<section class="card">
+<section id="missions" class="card">
   <h2>Missions en Entreprise</h2>
   <p>À compléter</p>
 </section>
 
-<section class="card">
+<section id="diplomes" class="card">
   <h2>Diplômes et Certifications</h2>
   <p>À compléter</p>
 </section>
 
-<section class="card">
+<section id="projets" class="card">
   <h2>Projets Professionnels</h2>
   <p>À compléter</p>
 </section>
 
-<section class="card">
+<section id="veille" class="card">
   <h2>Veille Technologique</h2>
-  <div id="rss-feed">Chargement...</div>
+  <div id="rss-feed">Chargement du flux...</div>
 </section>
 
 </main>
@@ -265,6 +265,35 @@
       overlay.classList.remove("active");
     }
   });
+
+  // RSS
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.google.com/alerts/feeds/08556610039024231708/17780416484797136191")
+    .then(response => response.json())
+    .then(data => {
+      let html = "";
+
+      data.items.slice(0, 4).forEach(item => {
+        const date = item.pubDate
+          ? new Date(item.pubDate).toLocaleDateString('fr-FR', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            })
+          : "Date inconnue";
+
+        html += `
+          <div class="rss-item">
+            <a href="${item.link}" target="_blank">${item.title}</a>
+            <span class="rss-date">${date}</span>
+          </div>
+        `;
+      });
+
+      document.getElementById("rss-feed").innerHTML = html;
+    })
+    .catch(error => {
+      document.getElementById("rss-feed").innerHTML = "Erreur de chargement du flux.";
+    });
 </script>
 
 </body>
