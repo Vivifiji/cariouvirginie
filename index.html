@@ -42,38 +42,41 @@
     }
 
     /* BOUTON MENU */
-    .menu-btn {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      font-size: 22px;
-      cursor: pointer;
-      z-index: 3000;
-      color: white;
-      background: rgba(128, 0, 200, 0.85);
-      padding: 8px 12px;
-      border-radius: 8px;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
+.menu-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 3000;
+  color: white;
+
+  /* Fond violet */
+  background: rgba(128, 0, 200, 0.85);
+  padding: 8px 12px;
+  border-radius: 8px;
+
+  /* Effet léger */
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
 
     /* SIDEBAR */
     .sidebar {
       position: fixed;
-      top: 0;
-      left: 0;
+      left: -250px;
+      top: 0; /* au-dessus du header */
       width: 220px;
       height: 100%;
       background-color: #2c3e50;
       padding: 80px 20px 20px 20px;
       color: white;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 2500;
+      transition: 0.3s;
+      z-index: 2500; /* au-dessus du reste */
     }
 
     .sidebar.active {
-      transform: translateX(0);
+      left: 0;
     }
 
     .sidebar a {
@@ -88,29 +91,6 @@
 
     .sidebar a:hover {
       background-color: #34495e;
-    }
-
-    /* OVERLAY */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-
-      transition: 0.3s;
-      z-index: 2000;
-    }
-
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
     }
 
     /* HEADER */
@@ -148,15 +128,24 @@
       color: #2c3e50;
     }
 
+    ul {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
     .card {
       background: white;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
     }
 
-    /* VEILLE */
+    /* VEILLE TECHNOLOGIQUE */
     .rss-item {
       display: flex;
       flex-direction: column;
@@ -165,23 +154,34 @@
       border-left: 4px solid #8000c8;
       background: linear-gradient(135deg, #f9f4ff, #f0f4ff);
       border-radius: 0 8px 8px 0;
-      transition: 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .rss-item:hover {
       transform: translateX(5px);
+      box-shadow: 2px 3px 10px rgba(128, 0, 200, 0.15);
     }
 
     .rss-item a {
       text-decoration: none;
       color: #2c3e50;
       font-weight: bold;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .rss-item a:hover {
+      color: #8000c8;
     }
 
     .rss-date {
       font-size: 12px;
       color: #999;
       margin-top: 6px;
+    }
+
+    .rss-date::before {
+      content: "📅 ";
     }
   </style>
 </head>
@@ -191,6 +191,16 @@
 <!-- BOUTON MENU -->
 <div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
 
+<!-- NAVBAR -->
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="mon-parcours-pro.html">Mon Parcours Professionnel</a></li>
+    <a href="contact.html">Contact</a>
+    <li><a href="e5-tableau-de-synthese.pdf" target="_blank">Tableau de Synthèse</a></li>
+  </ul>
+</nav>
+
 <!-- SIDEBAR -->
 <div class="sidebar">
   <a href="#missions">Missions en Entreprise</a>
@@ -199,21 +209,8 @@
   <a href="#veille">Veille Technologique</a>
 </div>
 
-<!-- OVERLAY -->
-<div class="overlay"></div>
-
-<!-- NAVBAR -->
-<nav>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="mon-parcours-pro.html">Mon Parcours Professionnel</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="e5-tableau-de-synthese.pdf" target="_blank">Tableau de Synthèse</a></li>
-  </ul>
-</nav>
-
 <header>
-  <h1>CARIOU Virginie BTS SIO SISR Portfolio</h1>
+  <h1>CARIOU Virginie BTS SIO SISR Portefolio</h1>
 </header>
 
 <main>
@@ -235,65 +232,44 @@
 
 <section id="veille" class="card">
   <h2>Veille Technologique</h2>
+  <h3 style="text-align: center; color: #8000c8; margin-top: 5px; margin-bottom: 12px; font-size: 1.2em;">🔐 L'IA dans la Cybersécurité</h3>
+  <p style="font-style: italic; text-align: center; color: #666; margin-bottom: 20px;">
+    J'ai choisi de réaliser ma veille technologique sur le thème de l'intelligence artificielle appliquée à la cybersécurité. Pour cela, j'utilise des outils tels que Google Alertes et rss2json afin de collecter et afficher automatiquement les informations les plus récentes.
+  </p>
   <div id="rss-feed">Chargement du flux...</div>
 </section>
 
 </main>
 
 <script>
-  const sidebar = document.querySelector(".sidebar");
-  const menuBtn = document.querySelector(".menu-btn");
-  const overlay = document.querySelector(".overlay");
-
   function toggleMenu() {
-    sidebar.classList.toggle("active");
-    overlay.classList.toggle("active");
+    document.querySelector('.sidebar').classList.toggle('active');
   }
 
-  overlay.addEventListener("click", () => {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-  });
+  // Flux RSS
+fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.google.com/alerts/feeds/08556610039024231708/17780416484797136191")
+  .then(response => response.json())
+  .then(data => {
+    let html = "";
 
-  document.addEventListener("click", function(event) {
-    if (
-      sidebar.classList.contains("active") &&
-      !sidebar.contains(event.target) &&
-      !menuBtn.contains(event.target)
-    ) {
-      sidebar.classList.remove("active");
-      overlay.classList.remove("active");
-    }
-  });
+    data.items.slice(0, 4).forEach(item => {
+      const date = item.pubDate
+        ? new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+        : "Date inconnue";
 
-  // RSS
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.google.com/alerts/feeds/08556610039024231708/17780416484797136191")
-    .then(response => response.json())
-    .then(data => {
-      let html = "";
-
-      data.items.slice(0, 4).forEach(item => {
-        const date = item.pubDate
-          ? new Date(item.pubDate).toLocaleDateString('fr-FR', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric'
-            })
-          : "Date inconnue";
-
-        html += `
-          <div class="rss-item">
-            <a href="${item.link}" target="_blank">${item.title}</a>
-            <span class="rss-date">${date}</span>
-          </div>
-        `;
-      });
-
-      document.getElementById("rss-feed").innerHTML = html;
-    })
-    .catch(error => {
-      document.getElementById("rss-feed").innerHTML = "Erreur de chargement du flux.";
+      html += `
+        <div class="rss-item">
+          <a href="${item.link}" target="_blank">${item.title}</a>
+          <span class="rss-date">${date}</span>
+        </div>
+      `;
     });
+
+    document.getElementById("rss-feed").innerHTML = html;
+  })
+  .catch(error => {
+    document.getElementById("rss-feed").innerHTML = "Erreur de chargement du flux.";
+  });
 </script>
 
 </body>
