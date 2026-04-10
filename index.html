@@ -12,6 +12,52 @@
       padding: 0;
     }
 
+    /* SIDEBAR TOUJOURS VISIBLE */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 220px;
+      height: 100%;
+      background-color: #2c3e50;
+      padding: 30px 20px 20px 20px;
+      color: white;
+      z-index: 3000;
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.4);
+      margin: 20px 0 6px 12px;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      margin: 4px 0;
+      padding: 10px 12px;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    .sidebar a svg {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      stroke: white;
+      fill: none;
+    }
+
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+
     /* NAVBAR */
     nav {
       background-color: white;
@@ -20,6 +66,7 @@
       top: 0;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin-left: 220px;
     }
 
     .nav-wrapper {
@@ -79,84 +126,6 @@
       fill: none;
     }
 
-    /* BOUTON MENU */
-    .menu-btn {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      font-size: 22px;
-      cursor: pointer;
-      z-index: 4000;
-      color: white;
-      background: rgba(128, 0, 200, 0.85);
-      padding: 8px 12px;
-      border-radius: 8px;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      user-select: none;
-    }
-
-    /* SIDEBAR */
-    .sidebar {
-      position: fixed;
-      left: -260px;
-      top: 0;
-      width: 220px;
-      height: 100%;
-      background-color: #2c3e50;
-      padding: 80px 20px 20px 20px;
-      color: white;
-      transition: left 0.3s;
-      z-index: 3000;
-      overflow-y: auto;
-    }
-
-    .sidebar.active {
-      left: 0;
-    }
-
-    .sidebar-overlay {
-      display: block;
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0);
-      z-index: 2500;
-      transition: background 0.3s;
-    }
-
-    .sidebar-overlay.active {
-      pointer-events: all;
-      background: rgba(0,0,0,0.3);
-    }
-
-    .sidebar a {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: white;
-      text-decoration: none;
-      margin: 10px 0;
-      padding: 10px 12px;
-      border-radius: 5px;
-      font-size: 17px;
-    }
-
-    .sidebar a svg {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      stroke: white;
-      fill: none;
-    }
-
-    .sidebar a:hover {
-      background-color: #34495e;
-    }
-
     /* HEADER */
     header {
       background-image: url('des-bureaux-d-affaires-futuristes.jpg');
@@ -167,6 +136,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      margin-left: 220px;
     }
 
     header::before {
@@ -184,8 +154,10 @@
       text-shadow: 2px 2px 5px black;
     }
 
+    /* CONTENU PRINCIPAL */
     main {
       padding: 30px;
+      margin-left: 220px;
     }
 
     h1, h2 {
@@ -246,11 +218,38 @@
 
 <body>
 
-<!-- BOUTON MENU -->
-<div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+<!-- SIDEBAR FIXE -->
+<div class="sidebar">
 
-<!-- OVERLAY -->
-<div class="sidebar-overlay" id="overlay" onclick="closeMenu()"></div>
+  <span class="sidebar-title">Navigation</span>
+  <a href="#missions">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+    Missions en Entreprise
+  </a>
+  <a href="#diplomes">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    Diplômes et Certifications
+  </a>
+  <a href="#projets">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+    Projets Professionnels
+  </a>
+  <a href="#veille">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Veille Technologique
+  </a>
+
+  <span class="sidebar-title">Autres</span>
+  <a href="mon-parcours-pro.html">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    Mon Parcours Professionnel
+  </a>
+  <a href="e5-tableau-de-synthese.pdf" target="_blank">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    Tableau de Synthèse
+  </a>
+
+</div>
 
 <!-- NAVBAR -->
 <nav>
@@ -272,86 +271,42 @@
   </div>
 </nav>
 
-<!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
-  <a href="#missions" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-    Missions en Entreprise
-  </a>
-  <a href="#diplomes" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-    Diplômes et Certifications
-  </a>
-  <a href="#projets" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-    Projets Professionnels
-  </a>
-  <a href="#veille" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    Veille Technologique
-  </a>
-  <a href="mon-parcours-pro.html" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    Mon Parcours Professionnel
-  </a>
-  <a href="e5-tableau-de-synthese.pdf" target="_blank" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-    Tableau de Synthèse
-  </a>
-</div>
-
 <header>
   <h1>CARIOU Virginie BTS SIO SISR Portfolio</h1>
 </header>
 
 <main>
 
-<section id="missions" class="card">
-  <h2>Missions en Entreprise</h2>
-  <p style="font-style: italic; color: #666;">Retrouvez ici les missions réalisées en entreprise dans le cadre de mon alternance.</p>
-</section>
+  <section id="missions" class="card">
+    <h2>Missions en Entreprise</h2>
+    <p style="font-style: italic; color: #666;">Retrouvez ici les missions réalisées en entreprise dans le cadre de mon alternance.</p>
+  </section>
 
-<section id="diplomes" class="card">
-  <h2>Diplômes et Certifications</h2>
-  <p style="font-style: italic; color: #666;">Retrouvez ici les certifications et diplômes obtenus au cours de ma formation.</p>
-</section>
+  <section id="diplomes" class="card">
+    <h2>Diplômes et Certifications</h2>
+    <p style="font-style: italic; color: #666;">Retrouvez ici les certifications et diplômes obtenus au cours de ma formation.</p>
+  </section>
 
-<section id="projets" class="card">
-  <h2>Projets Professionnels</h2>
-  <p style="font-style: italic; color: #666;">Découvrez les projets réalisés dans le cadre de mes études et de mes missions en entreprise.</p>
-</section>
+  <section id="projets" class="card">
+    <h2>Projets Professionnels</h2>
+    <p style="font-style: italic; color: #666;">Découvrez les projets réalisés dans le cadre de mes études et de mes missions en entreprise.</p>
+  </section>
 
-<section id="veille" class="card">
-  <h2>Veille Technologique</h2>
-  <h3 style="text-align: center; color: #8000c8; margin-top: 5px; margin-bottom: 12px; font-size: 1.2em;">🔐 L'IA dans la Cybersécurité</h3>
-  <p style="font-style: italic; text-align: center; color: #666; margin-bottom: 20px;">
-    J'ai choisi de réaliser ma veille technologique sur le thème de l'intelligence artificielle appliquée à la cybersécurité. Pour cela, j'utilise des outils tels que Google Alertes et rss2json afin de collecter et afficher automatiquement les informations les plus récentes.
-  </p>
-  <p style="font-size: 12px; color: #999; text-align: right; margin-bottom: 8px;">
-    Dernière mise à jour : <span id="rss-update-time">...</span>
-  </p>
-  <div id="rss-feed">Chargement du flux...</div>
-</section>
+  <section id="veille" class="card">
+    <h2>Veille Technologique</h2>
+    <h3 style="text-align: center; color: #8000c8; margin-top: 5px; margin-bottom: 12px; font-size: 1.2em;">🔐 L'IA dans la Cybersécurité</h3>
+    <p style="font-style: italic; text-align: center; color: #666; margin-bottom: 20px;">
+      J'ai choisi de réaliser ma veille technologique sur le thème de l'intelligence artificielle appliquée à la cybersécurité. Pour cela, j'utilise des outils tels que Google Alertes et rss2json afin de collecter et afficher automatiquement les informations les plus récentes.
+    </p>
+    <p style="font-size: 12px; color: #999; text-align: right; margin-bottom: 8px;">
+      Dernière mise à jour : <span id="rss-update-time">...</span>
+    </p>
+    <div id="rss-feed">Chargement du flux...</div>
+  </section>
 
 </main>
 
 <script>
-  function toggleMenu() {
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    const isOpen = sidebar.classList.toggle('active');
-    if (isOpen) {
-      overlay.classList.add('active');
-    } else {
-      overlay.classList.remove('active');
-    }
-  }
-
-  function closeMenu() {
-    document.getElementById('sidebar').classList.remove('active');
-    document.getElementById('overlay').classList.remove('active');
-  }
-
   // Flux RSS
   fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.google.com/alerts/feeds/08556610039024231708/17780416484797136191")
     .then(response => response.json())
