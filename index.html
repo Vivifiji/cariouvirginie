@@ -349,7 +349,7 @@
     .then(response => response.json())
     .then(data => {
       let html = "";
-      data.items.slice(0, 4).forEach(item => {
+      data.items.slice(0, 5).forEach(item => {
         const date = item.pubDate
           ? new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
           : "Date inconnue";
