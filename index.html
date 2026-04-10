@@ -115,7 +115,6 @@
       left: 0;
     }
 
-    /* Overlay sombre — cliquer dessus ferme la sidebar */
     .sidebar-overlay {
       display: block;
       pointer-events: none;
@@ -156,6 +155,13 @@
 
     .sidebar a:hover {
       background-color: #34495e;
+    }
+
+    /* Séparateur dans la sidebar */
+    .sidebar-separator {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin: 14px 0;
     }
 
     /* HEADER */
@@ -250,16 +256,14 @@
 <!-- BOUTON MENU -->
 <div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
 
-<!-- OVERLAY — cliquer ici ferme la sidebar -->
+<!-- OVERLAY -->
 <div class="sidebar-overlay" id="overlay" onclick="closeMenu()"></div>
 
-<!-- NAVBAR -->
+<!-- NAVBAR : uniquement Accueil + icônes contact -->
 <nav>
   <div class="nav-wrapper">
     <ul>
       <li><a href="index.html">Accueil</a></li>
-      <li><a href="mon-parcours-pro.html">Mon Parcours Professionnel</a></li>
-      <li><a href="e5-tableau-de-synthese.pdf" target="_blank">Tableau de Synthèse</a></li>
     </ul>
     <div class="nav-icons">
       <a href="mailto:Virginie04.c@gmail.com" title="M'envoyer un email">
@@ -275,8 +279,10 @@
   </div>
 </nav>
 
-<!-- SIDEBAR -->
+<!-- SIDEBAR : navigation complète -->
 <div class="sidebar" id="sidebar">
+
+  <!-- Rubriques de la page -->
   <a href="#missions" onclick="closeMenu()">
     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
     Missions en Entreprise
@@ -293,27 +299,41 @@
     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     Veille Technologique
   </a>
+
+  <!-- Séparateur -->
+  <hr class="sidebar-separator">
+
+  <!-- Liens déplacés depuis la navbar -->
+  <a href="mon-parcours-pro.html" onclick="closeMenu()">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    Mon Parcours Professionnel
+  </a>
+  <a href="e5-tableau-de-synthese.pdf" target="_blank" onclick="closeMenu()">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    Tableau de Synthèse
+  </a>
+
 </div>
 
 <header>
-  <h1>CARIOU Virginie BTS SIO SISR Portefolio</h1>
+  <h1>CARIOU Virginie BTS SIO SISR Portfolio</h1>
 </header>
 
 <main>
 
 <section id="missions" class="card">
   <h2>Missions en Entreprise</h2>
-  <p><p style="font-style: italic; color: #666;">Retrouvez ici les missions réalisées en entreprise dans le cadre de mon alternance.</p></p>
+  <p style="font-style: italic; color: #666;">Retrouvez ici les missions réalisées en entreprise dans le cadre de mon alternance.</p>
 </section>
 
 <section id="diplomes" class="card">
   <h2>Diplômes et Certifications</h2>
-  <p><p style="font-style: italic; color: #666;">Retrouvez ici les certifications et diplômes obtenus au cours de ma formation.</p></p>
+  <p style="font-style: italic; color: #666;">Retrouvez ici les certifications et diplômes obtenus au cours de ma formation.</p>
 </section>
 
 <section id="projets" class="card">
   <h2>Projets Professionnels</h2>
-  <p><p style="font-style: italic; color: #666;">Découvrez les projets réalisés dans le cadre de mes études et de mes missions en entreprise.</p></p>
+  <p style="font-style: italic; color: #666;">Découvrez les projets réalisés dans le cadre de mes études et de mes missions en entreprise.</p>
 </section>
 
 <section id="veille" class="card">
@@ -349,7 +369,7 @@
     .then(response => response.json())
     .then(data => {
       let html = "";
-      data.items.slice(0, 5).forEach(item => {
+      data.items.slice(0, 4).forEach(item => {
         const date = item.pubDate
           ? new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
           : "Date inconnue";
