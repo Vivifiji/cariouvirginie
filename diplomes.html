@@ -90,6 +90,10 @@
       margin-bottom: 12px;
     }
 
+    .timeline-date.a-venir {
+      background-color: #8000c8;
+    }
+
     .timeline-content {
       display: flex;
       align-items: flex-start;
@@ -108,12 +112,21 @@
       background: white;
     }
 
+    .timeline-content.a-venir::before {
+      content: "⏳";
+    }
+
     .timeline-body {
       background-color: #f9f4ff;
       border: 1px solid #e0d0f0;
       border-radius: 8px;
       padding: 16px 20px;
       width: 100%;
+    }
+
+    .timeline-body.a-venir {
+      background-color: #f0f4ff;
+      border: 1px dashed #8000c8;
     }
 
     .timeline-body h3 {
@@ -212,6 +225,18 @@
     <p style="font-style: italic; color: #666;">Retrouvez ici les certifications et diplômes obtenus au cours de ma formation.</p>
 
     <div class="timeline">
+
+      <!-- BTS SIO SISR - À venir -->
+      <div class="timeline-entry">
+        <div class="timeline-date a-venir">À venir — Juin 2027</div>
+        <div class="timeline-content a-venir">
+          <div class="timeline-body a-venir">
+            <h3>BTS Services Informatiques aux Organisations — Solutions d'Infrastructure, Systèmes et Réseaux (SISR)</h3>
+            <div class="timeline-source">IMIE Paris</div>
+            <p>Formation en alternance préparant aux métiers de l'administration des systèmes et réseaux informatiques, de la maintenance et du support aux utilisateurs.</p>
+          </div>
+        </div>
+      </div>
 
       <!-- Atelier RGPD -->
       <div class="timeline-entry">
