@@ -64,10 +64,7 @@
       position: relative; margin-left: 220px; transition: margin-left 0.3s;
     }
     header.retracted { margin-left: 60px; }
-    header::before {
-      content: ""; position: absolute; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.2);
-    }
+    header::before { content: ""; position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.2); }
     header h1 {
       position: relative; color: white; font-size: 2em;
       text-shadow: 2px 2px 5px black; text-align: center; padding: 0 20px;
@@ -76,8 +73,83 @@
     main { padding: 30px; margin-left: 220px; transition: margin-left 0.3s; }
     main.retracted { margin-left: 60px; }
     h2 { color: #2c3e50; }
-    section { margin-bottom: 30px; }
     .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      margin-top: 24px;
+      padding-left: 10px;
+    }
+
+    .timeline-entry {
+      margin-bottom: 30px;
+    }
+
+    .timeline-date {
+      display: inline-block;
+      background-color: #3d5166;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      padding: 5px 14px;
+      border-radius: 5px;
+      margin-bottom: 12px;
+    }
+
+    .timeline-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      border-left: 2px solid #8000c8;
+      padding-left: 20px;
+      margin-left: 10px;
+      position: relative;
+    }
+
+    .timeline-content::before {
+      content: "🎓";
+      position: absolute;
+      left: -14px;
+      top: 10px;
+      font-size: 16px;
+      background: white;
+    }
+
+    .timeline-body {
+      background-color: #f9f4ff;
+      border: 1px solid #e0d0f0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      width: 100%;
+    }
+
+    .timeline-body h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      color: #8000c8;
+    }
+
+    .timeline-body p {
+      margin: 0 0 14px 0;
+      font-size: 14px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .certif-btn {
+      display: inline-block;
+      padding: 7px 16px;
+      background-color: #8000c8;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: background-color 0.2s;
+    }
+
+    .certif-btn:hover {
+      background-color: #6a00aa;
+    }
   </style>
 </head>
 <body>
@@ -137,6 +209,24 @@
   <section class="card">
     <h2>Diplômes et Certifications</h2>
     <p style="font-style: italic; color: #666;">Retrouvez ici les certifications et diplômes obtenus au cours de ma formation.</p>
+
+    <div class="timeline">
+
+      <!-- Atelier RGPD -->
+      <div class="timeline-entry">
+        <div class="timeline-date">Mars 2026</div>
+        <div class="timeline-content">
+          <div class="timeline-body">
+            <h3>L'Atelier RGPD</h3>
+            <p>L'Atelier RGPD est un MOOC gratuit et accessible à tous, proposé par la CNIL, destiné à sensibiliser les professionnels à la protection des données personnelles et à les accompagner dans leur mise en conformité.</p>
+            <a href="Certifications/atelier-rgpd-cariou-virginie.pdf" target="_blank" class="certif-btn">📄 Voir la certification</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ajouter d'autres certifications ici en copiant le bloc timeline-entry -->
+
+    </div>
   </section>
 </main>
 
