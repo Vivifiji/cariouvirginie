@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>CARIOU Virginie - Portfolio - BTS SIO SISR</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238000c8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2'/><path d='M8 21h8M12 17v4'/></svg>">
+  <title>Contact - CARIOU Virginie</title>
 
   <style>
     body {
@@ -10,160 +11,14 @@
       background-color: #f4f6f8;
       margin: 0;
       padding: 0;
+      text-align: center;
     }
 
-    /* NAVBAR */
-    nav {
-      background-color: white;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .nav-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: bold;
-    }
-
-    nav ul a:hover {
-      color: #3498db;
-    }
-
-    /* ICÔNES CONTACT */
-    .nav-icons {
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .nav-icons a {
-      color: #2c3e50;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      transition: color 0.2s, transform 0.2s;
-    }
-
-    .nav-icons a:hover {
-      color: #8000c8;
-      transform: translateY(-2px);
-    }
-
-    .nav-icons svg {
-      width: 22px;
-      height: 22px;
-      stroke: currentColor;
-      fill: none;
-    }
-
-    /* BOUTON MENU */
-    .menu-btn {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      font-size: 22px;
-      cursor: pointer;
-      z-index: 4000;
-      color: white;
-      background: rgba(128, 0, 200, 0.85);
-      padding: 8px 12px;
-      border-radius: 8px;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      user-select: none;
-    }
-
-    /* SIDEBAR */
-    .sidebar {
-      position: fixed;
-      left: -260px;
-      top: 0;
-      width: 220px;
-      height: 100%;
-      background-color: #2c3e50;
-      padding: 80px 20px 20px 20px;
-      color: white;
-      transition: left 0.3s;
-      z-index: 3000;
-      overflow-y: auto;
-    }
-
-    .sidebar.active {
-      left: 0;
-    }
-
-    /* Overlay sombre — cliquer dessus ferme la sidebar */
-    .sidebar-overlay {
-      display: block;
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0);
-      z-index: 2500;
-      transition: background 0.3s;
-    }
-
-    .sidebar-overlay.active {
-      pointer-events: all;
-      background: rgba(0,0,0,0.3);
-    }
-
-    .sidebar a {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: white;
-      text-decoration: none;
-      margin: 10px 0;
-      padding: 10px 12px;
-      border-radius: 5px;
-      font-size: 17px;
-    }
-
-    .sidebar a svg {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      stroke: white;
-      fill: none;
-    }
-
-    .sidebar a:hover {
-      background-color: #34495e;
-    }
-
-    /* HEADER */
     header {
-      background-image: url('des-bureaux-d-affaires-futuristes.jpg');
+      background-image: url('contact.jpg');
       background-size: cover;
       background-position: center;
-      height: 300px;
+      height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -175,197 +30,114 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.1);
     }
 
     header h1 {
       position: relative;
       color: white;
-      font-size: 2.5em;
+      font-size: 3em;
       text-shadow: 2px 2px 5px black;
     }
 
     main {
-      padding: 30px;
-    }
-
-    h1, h2 {
-      color: #2c3e50;
-    }
-
-    section {
-      margin-bottom: 30px;
+      padding: 40px;
     }
 
     .card {
       background: white;
-      padding: 20px;
+      padding: 30px;
+      margin: 20px auto;
+      width: 60%;
       border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+      /* Animation */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease forwards;
     }
 
-    /* VEILLE TECHNOLOGIQUE */
-    .rss-item {
-      display: flex;
-      flex-direction: column;
-      padding: 14px 16px;
-      margin-bottom: 12px;
-      border-left: 4px solid #8000c8;
-      background: linear-gradient(135deg, #f9f4ff, #f0f4ff);
-      border-radius: 0 8px 8px 0;
-      transition: transform 0.2s, box-shadow 0.2s;
+    /* Animation */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .rss-item:hover {
-      transform: translateX(5px);
-      box-shadow: 2px 3px 10px rgba(128, 0, 200, 0.15);
+    /* Effet cascade */
+    .card:nth-child(1) {
+      animation-delay: 0.2s;
     }
 
-    .rss-item a {
+    .card:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .card:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+
+    /* Effet au survol */
+    .card:hover {
+      transform: translateY(-5px);
+      transition: 0.3s;
+    }
+
+    a {
+      color: #3498db;
       text-decoration: none;
-      color: #2c3e50;
       font-weight: bold;
-      font-size: 15px;
-      line-height: 1.4;
     }
 
-    .rss-item a:hover {
-      color: #8000c8;
+    a:hover {
+      text-decoration: underline;
     }
 
-    .rss-date {
-      font-size: 12px;
-      color: #999;
-      margin-top: 6px;
-    }
-
-    .rss-date::before {
-      content: "📅 ";
-    }
   </style>
 </head>
 
 <body>
 
-<!-- BOUTON MENU -->
-<div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
-
-<!-- OVERLAY — cliquer ici ferme la sidebar -->
-<div class="sidebar-overlay" id="overlay" onclick="closeMenu()"></div>
-
-<!-- NAVBAR -->
-<nav>
-  <div class="nav-wrapper">
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="mon-parcours-pro.html">Mon Parcours Professionnel</a></li>
-      <li><a href="e5-tableau-de-synthese.pdf" target="_blank">Tableau de Synthèse</a></li>
-    </ul>
-    <div class="nav-icons">
-      <a href="mailto:Virginie04.c@gmail.com" title="M'envoyer un email">
-        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      </a>
-      <a href="https://www.linkedin.com/in/virginie-alternance-technicien-helpdesk" target="_blank" title="Mon profil LinkedIn">
-        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-2z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="cv-cariou-virginie.pdf" target="_blank" title="Voir mon CV">
-        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      </a>
-    </div>
-  </div>
-</nav>
-
-<!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
-  <a href="#missions" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-    Missions en Entreprise
-  </a>
-  <a href="#diplomes" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-    Diplômes et Certifications
-  </a>
-  <a href="#projets" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-    Projets Professionnels
-  </a>
-  <a href="#veille" onclick="closeMenu()">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    Veille Technologique
-  </a>
-</div>
-
 <header>
-  <h1>CARIOU Virginie BTS SIO SISR Portefolio</h1>
+  <h1>Contact</h1>
 </header>
 
 <main>
 
-<section id="missions" class="card">
-  <h2>Missions en Entreprise</h2>
-  <p>À compléter</p>
-</section>
-
-<section id="diplomes" class="card">
-  <h2>Diplômes et Certifications</h2>
-  <p>À compléter</p>
-</section>
-
-<section id="projets" class="card">
-  <h2>Projets Professionnels</h2>
-  <p>À compléter</p>
-</section>
-
-<section id="veille" class="card">
-  <h2>Veille Technologique</h2>
-  <h3 style="text-align: center; color: #8000c8; margin-top: 5px; margin-bottom: 12px; font-size: 1.2em;">🔐 L'IA dans la Cybersécurité</h3>
-  <p style="font-style: italic; text-align: center; color: #666; margin-bottom: 20px;">
-    J'ai choisi de réaliser ma veille technologique sur le thème de l'intelligence artificielle appliquée à la cybersécurité. Pour cela, j'utilise des outils tels que Google Alertes et rss2json afin de collecter et afficher automatiquement les informations les plus récentes.
+<div class="card">
+  <h2>📧 Email</h2>
+  <p>
+    <a href="mailto:Virginie04.c@gmail.com">Virginie04.c@gmail.com</a>
   </p>
-  <div id="rss-feed">Chargement du flux...</div>
-</section>
+</div>
+
+<div class="card">
+  <h2>💼 LinkedIn</h2>
+  <p>
+    <a href="https://www.linkedin.com/in/virginie-alternance-technicien-helpdesk" target="_blank">
+      Voir mon profil LinkedIn
+    </a>
+  </p>
+</div>
+
+<div class="card">
+  <h2>📄 Mon CV</h2>
+  <p>
+    <a href="cv-cariou-virginie.pdf" target="_blank">Voir mon CV</a>
+  </p>
+</div>
+
+<div class="card">
+  <a href="index.html">⬅ Retour à l'accueil</a>
+</div>
 
 </main>
-
-<script>
-  function toggleMenu() {
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    const isOpen = sidebar.classList.toggle('active');
-    if (isOpen) {
-      overlay.classList.add('active');
-    } else {
-      overlay.classList.remove('active');
-    }
-  }
-
-  function closeMenu() {
-    document.getElementById('sidebar').classList.remove('active');
-    document.getElementById('overlay').classList.remove('active');
-  }
-
-  // Flux RSS
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.google.com/alerts/feeds/08556610039024231708/17780416484797136191")
-    .then(response => response.json())
-    .then(data => {
-      let html = "";
-      data.items.slice(0, 4).forEach(item => {
-        const date = item.pubDate
-          ? new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
-          : "Date inconnue";
-        html += `
-          <div class="rss-item">
-            <a href="${item.link}" target="_blank">${item.title}</a>
-            <span class="rss-date">${date}</span>
-          </div>
-        `;
-      });
-      document.getElementById("rss-feed").innerHTML = html;
-    })
-    .catch(() => {
-      document.getElementById("rss-feed").innerHTML = "Erreur de chargement du flux.";
-    });
-</script>
 
 </body>
 </html>
