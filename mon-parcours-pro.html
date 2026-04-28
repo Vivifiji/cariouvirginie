@@ -3,217 +3,304 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238000c8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2'/><path d='M8 21h8M12 17v4'/></svg>">
-  <title>Mon Parcours Professionnel - CARIOU Virginie</title>
-
+  <title>CARIOU Virginie - Diplômes et Certifications</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-      margin: 0;
-      padding: 0;
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background-color: #f4f6f8; margin: 0; padding: 0; }
+
+    .sidebar {
+      position: fixed; left: 0; top: 0; width: 220px; height: 100%;
+      background-color: #2c3e50; padding: 80px 10px 20px 10px;
+      color: white; z-index: 3000; overflow: hidden; transition: width 0.3s;
     }
+    .sidebar.retracted { width: 60px; }
+    .sidebar-title {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+      color: rgba(255,255,255,0.4); margin: 20px 0 6px 8px;
+      white-space: nowrap; overflow: hidden; opacity: 1; transition: opacity 0.2s;
+    }
+    .sidebar.retracted .sidebar-title { opacity: 0; }
+    .sidebar a {
+      display: flex; align-items: center; gap: 12px; color: white;
+      text-decoration: none; margin: 4px 0; padding: 10px 8px;
+      border-radius: 5px; font-size: 15px; white-space: normal;
+    }
+    .sidebar a.active { background-color: #8000c8; }
+    .sidebar a svg { flex-shrink: 0; width: 22px; height: 22px; stroke: white; fill: none; }
+    .sidebar a span { opacity: 1; transition: opacity 0.2s; }
+    .sidebar.retracted a span { opacity: 0; }
+    .sidebar a:hover { background-color: #34495e; }
+    .sidebar a.active:hover { background-color: #6a00aa; }
 
-.intro {
-  font-style: italic;
-  background: white;
-  padding: 20px;
-  margin: 20px auto;
-  width: 70%;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  color: #2c3e50;
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.6;
+    nav {
+      background-color: white; padding: 15px 0; position: sticky; top: 0;
+      z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin-left: 220px; transition: margin-left 0.3s;
+    }
+    nav.retracted { margin-left: 60px; }
+    .nav-wrapper { position: relative; display: flex; align-items: center; justify-content: center; }
+    .menu-toggle {
+      position: absolute; left: 20px; background: none; border: none;
+      font-size: 22px; cursor: pointer; color: #2c3e50; padding: 0; line-height: 1; transition: color 0.2s;
+    }
+    .menu-toggle:hover { color: #8000c8; }
+    nav ul { list-style: none; display: flex; justify-content: center; gap: 40px; margin: 0; padding: 0; }
+    nav ul a { text-decoration: none; color: #2c3e50; font-weight: bold; }
+    nav ul a:hover { color: #3498db; }
+    .nav-icons {
+      position: absolute; right: 30px; top: 50%; transform: translateY(-50%);
+      display: flex; gap: 16px; align-items: center;
+    }
+    .nav-icons a {
+      color: #2c3e50; display: flex; align-items: center;
+      text-decoration: none; transition: color 0.2s, transform 0.2s;
+    }
+    .nav-icons a:hover { color: #8000c8; transform: translateY(-2px); }
+    .nav-icons svg { width: 22px; height: 22px; stroke: currentColor; fill: none; }
 
-  /* animation */
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.8s ease forwards;
-  animation-delay: 0.1s;
-}
-
-.intro p {
-  margin: 10px 0;
-}
-
-    .site {
-  padding-top: 20px;
-  border-top: 1px solid transparent;
-}
-    .card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.8s ease forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.card:nth-of-type(1) {
-  animation-delay: 0.2s;
-}
-    
-.card:nth-of-type(2) {
-  animation-delay: 0.4s;
-}
-
-.card:nth-of-type(3) {
-  animation-delay: 0.6s;
-}
-
-.card:nth-of-type(4) {
-  animation-delay: 0.8s;
-}
-
-    /* HEADER */
     header {
       background-image: url('des-bureaux-d-affaires-futuristes.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 250px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      background-size: cover; background-position: center;
+      height: 200px; display: flex; align-items: center; justify-content: center;
+      position: relative; margin-left: 220px; transition: margin-left 0.3s;
     }
-
-    header::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.2);
-    }
-
+    header.retracted { margin-left: 60px; }
+    header::before { content: ""; position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.2); }
     header h1 {
-      position: relative;
-      color: white;
-      font-size: 3em;
-      text-shadow: 2px 2px 5px black;
+      position: relative; color: white; font-size: 2em;
+      text-shadow: 2px 2px 5px black; text-align: center; padding: 0 20px;
     }
 
-    main {
-      padding: 40px;
-    }
+    main { padding: 30px; margin-left: 220px; transition: margin-left 0.3s; }
+    main.retracted { margin-left: 60px; }
+    h2 { color: #2c3e50; }
+    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-    .card {
-      background: white;
-      padding: 25px;
-      margin: 20px auto;
-      width: 70%;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+    /* ── TIMELINE ── */
+    .timeline { margin-top: 24px; padding-left: 10px; }
+    .timeline-entry { margin-bottom: 30px; }
 
-    .card h2 {
-      color: #2c3e50;
-      margin-bottom: 20px; /* espace sous la date */
-    }
-
-    .card p {
-      margin: 8px 0; /* espace entre lignes */
-    }
-
-    .card a {
-      color: #3498db;
-      text-decoration: none;
-      word-break: break-all;
-    }
-
-    .card a:hover {
-      text-decoration: underline;
-    }
-
-    /* Bouton retour */
-    .retour {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .retour a {
+    .timeline-date {
       display: inline-block;
-      padding: 10px 20px;
-      background-color: #3498db;
+      background-color: #3d5166;
       color: white;
+      font-weight: bold;
+      font-size: 14px;
+      padding: 5px 14px;
       border-radius: 5px;
+      margin-bottom: 12px;
+    }
+
+    .timeline-date.a-venir {
+      background-color: #8000c8;
+    }
+
+    .timeline-content {
+      display: flex;
+      align-items: flex-start;
+      border-left: 2px solid #8000c8;
+      padding-left: 20px;
+      margin-left: 10px;
+      position: relative;
+    }
+
+    .timeline-content::before {
+      content: "🎓";
+      position: absolute;
+      left: -14px;
+      top: 10px;
+      font-size: 16px;
+      background: white;
+    }
+
+    .timeline-content.a-venir::before {
+      content: "⏳";
+    }
+
+    .timeline-body {
+      background-color: #f9f4ff;
+      border: 1px solid #e0d0f0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      width: 100%;
+    }
+
+    .timeline-body.a-venir {
+      background-color: #f0f4ff;
+      border: 1px dashed #8000c8;
+    }
+
+    .timeline-body h3 {
+      margin: 0 0 6px 0;
+      font-size: 16px;
+      color: #8000c8;
+    }
+
+    .timeline-body .timeline-source {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .timeline-body p {
+      margin: 0 0 14px 0;
+      font-size: 14px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .timeline-body p:last-child { margin-bottom: 0; }
+
+    .certif-btn {
+      display: inline-block;
+      padding: 7px 16px;
+      background-color: #8000c8;
+      color: white;
       text-decoration: none;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: background-color 0.2s;
     }
-
-    .retour a:hover {
-      background-color: #2c80b4;
-    }
-
+    .certif-btn:hover { background-color: #6a00aa; }
+    .certif-btn.secondary { background-color: #6c757d; }
+    .certif-btn.secondary:hover { background-color: #565e64; }
   </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Mon Parcours Professionnel</h1>
+<div class="sidebar" id="sidebar">
+  <span class="sidebar-title">Navigation</span>
+  <a href="index.html">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+    <span>Missions en Entreprise</span>
+  </a>
+  <a href="diplomes.html" class="active">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    <span>Diplômes et Certifications</span>
+  </a>
+  <a href="projets.html">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+    <span>Projets Professionnels</span>
+  </a>
+  <a href="veille.html">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>Veille Technologique</span>
+  </a>
+  <span class="sidebar-title">Autres</span>
+  <a href="mon-parcours-pro.html">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>Mon Parcours Professionnel</span>
+  </a>
+  <a href="e5-tableau-de-synthese.pdf" target="_blank">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    <span>Tableau de Synthèse</span>
+  </a>
+</div>
+
+<nav id="navbar">
+  <div class="nav-wrapper">
+    <button class="menu-toggle" onclick="toggleSidebar()" title="Afficher/masquer le menu">☰</button>
+    <ul><li><a href="index.html">Accueil</a></li></ul>
+    <div class="nav-icons">
+      <a href="mailto:Virginie04.c@gmail.com" title="M'envoyer un email">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/virginie-alternance-technicien-helpdesk" target="_blank" title="Mon profil LinkedIn">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-2z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="cv-cariou-virginie.pdf" target="_blank" title="Voir mon CV">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header id="header">
+  <h1>Diplômes et Certifications</h1>
 </header>
 
-<main>
+<main id="main">
+  <section class="card">
+    <h2>Diplômes et Certifications</h2>
+    <p style="font-style: italic; color: #666;">Retrouvez ici les certifications et diplômes obtenus au cours de ma formation.</p>
 
-<div class="intro">
-  <p>
-    Après près de 10 ans d’expérience en tant qu’animatrice auprès de personnes âgées, j’ai choisi d’engager une reconversion professionnelle dans le domaine de l’informatique.
-  </p>
+    <div class="timeline">
 
-  <p>
-    Actuellement en formation BTS SIO option SISR à l’IMIE Paris, je me prépare à exercer le métier de technicienne systèmes et réseaux.
-  </p>
-</div>
+      <!-- BTS SIO SISR - À venir -->
+      <div class="timeline-entry">
+        <div class="timeline-date a-venir">À venir — Juin 2027</div>
+        <div class="timeline-content a-venir">
+          <div class="timeline-body a-venir">
+            <h3>BTS Services Informatiques aux Organisations — Solutions d'Infrastructure, Systèmes et Réseaux (SISR)</h3>
+            <div class="timeline-source">IMIE Paris</div>
+            <p>Formation en alternance préparant aux métiers de l'administration des systèmes et réseaux informatiques, de la maintenance et du support aux utilisateurs.</p>
+          </div>
+        </div>
+      </div>
 
-<div class="card">
-  <h2>Depuis septembre 2025</h2>
-  <p><strong>ANTIN Résidences – Paris (75009)</strong></p>
-  <p>Technicienne Systèmes et Réseaux en alternance</p>
-  <p>Secteur : Immobilier</p>
+      <!-- Atelier RGPD -->
+      <div class="timeline-entry">
+        <div class="timeline-date">Mars 2026</div>
+        <div class="timeline-content">
+          <div class="timeline-body">
+            <h3>L'Atelier RGPD</h3>
+            <div class="timeline-source">CNIL</div>
+            <p>L'Atelier RGPD est un MOOC gratuit et accessible à tous, proposé par la CNIL, destiné à sensibiliser les professionnels à la protection des données personnelles et à les accompagner dans leur mise en conformité.</p>
+            <a href="Certifications/atelier-rgpd-cariou-virginie.pdf" target="_blank" class="certif-btn">📄 Voir la certification</a>
+          </div>
+        </div>
+      </div>
 
-  <p class="site">
-    <strong>Site internet :</strong><br>
-    <a href="https://www.antin-residences.fr" target="_blank">
-      https://www.antin-residences.fr
-    </a>
-  </p>
-</div>
+      <!-- Concevez votre réseau TCP/IP -->
+      <div class="timeline-entry">
+        <div class="timeline-date">Septembre 2025</div>
+        <div class="timeline-content">
+          <div class="timeline-body">
+            <h3>Concevez votre réseau TCP/IP</h3>
+            <div class="timeline-source">OpenClassrooms — Systèmes & Réseaux</div>
+            <p>Formation en ligne portant sur la conception et la compréhension des réseaux TCP/IP, les adresses IP, le routage et les protocoles réseau fondamentaux. Cours complété à 100% avec 3/3 objectifs pédagogiques atteints.</p>
+            <a href="Certifications/concevez-reseau-tcp-ip-cariou-virginie.pdf" target="_blank" class="certif-btn secondary">📄 Voir la preuve de complétion</a>
+          </div>
+        </div>
+      </div>
 
-<div class="card">
-  <h2>Depuis septembre 2025</h2>
-  <p><strong>IMIE École Supérieure d’Informatique – Levallois-Perret (92300)</strong></p>
-  <p>Étudiante en BTS SIO option SISR</p>
+      <!-- Les fondamentaux de l'IA -->
+      <div class="timeline-entry">
+        <div class="timeline-date">Avril 2025</div>
+        <div class="timeline-content">
+          <div class="timeline-body">
+            <h3>Les fondamentaux de l'IA</h3>
+            <div class="timeline-source">CNFPT — FUN MOOC</div>
+            <p>MOOC portant sur l'acculturation à l'intelligence artificielle : ses principes de base, ses enjeux éthiques, ses limites et des cas d'usage concrets déployés dans des services publics et des territoires.</p>
+            <a href="Certifications/2025-04-01_les-fondamentaux-de-l-ia-cnfpt-badge-de-reussite-fr.pdf" target="_blank" class="certif-btn">📄 Voir la certification</a>
+          </div>
+        </div>
+      </div>
 
-  <p class="site">
-    <strong>Site internet :</strong><br>
-    <a href="https://www.imie-paris.fr/" target="_blank">
-      https://www.imie-paris.fr/
-    </a>
-  </p>
-</div>
+      <!-- DUT Carrières Sociales -->
+      <div class="timeline-entry">
+        <div class="timeline-date">Juin 2014</div>
+        <div class="timeline-content">
+          <div class="timeline-body">
+            <h3>DUT Carrières Sociales — Animation Sociale et Socioculturelle</h3>
+            <div class="timeline-source">Université Paris Cité (anciennement Paris V Descartes)</div>
+            <p>Formation universitaire visant à concevoir, mettre en œuvre et gérer des projets éducatifs et d'action sociale et socioculturelle.</p>
+          </div>
+        </div>
+      </div>
 
-<div class="card">
-  <h2>De septembre 2021 à juillet 2024</h2>
-  <p><strong>EHPAD Fondation Léopold Bellan – Romainville (93230)</strong></p>
-  <p>Animatrice en accueil de jour</p>
-  <p>Secteur : Services à la personne</p>
-
-  <p class="site">
-    <strong>Site internet :</strong><br>
-    <a href="https://bellan.fr/etablissement/59" target="_blank">
-      https://bellan.fr/etablissement/59
-    </a>
-  </p>
-</div>
-
-<div class="retour">
-  <a href="index.html">⬅ Retour à l'accueil</a>
-</div>
-
+    </div>
+  </section>
 </main>
 
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('retracted');
+    document.getElementById('navbar').classList.toggle('retracted');
+    document.getElementById('header').classList.toggle('retracted');
+    document.getElementById('main').classList.toggle('retracted');
+  }
+</script>
 </body>
 </html>
