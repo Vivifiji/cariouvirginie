@@ -77,73 +77,28 @@
     section { margin-bottom: 30px; }
     .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-    /* ── GRILLE DE PROJETS ── */
     .projets-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px; margin-top: 20px;
     }
-
     .projet-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      border-top: 4px solid #8000c8;
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px; display: flex; flex-direction: column; gap: 10px;
+      border-top: 4px solid #8000c8; transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    .projet-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(128,0,200,0.15);
-    }
-
+    .projet-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(128,0,200,0.15); }
     .projet-card .projet-tag {
-      display: inline-block;
-      background-color: #f0f4ff;
-      color: #3d5166;
-      font-size: 11px;
-      font-weight: bold;
-      padding: 3px 10px;
-      border-radius: 20px;
-      width: fit-content;
+      display: inline-block; background-color: #f0f4ff; color: #3d5166;
+      font-size: 11px; font-weight: bold; padding: 3px 10px; border-radius: 20px; width: fit-content;
     }
-
-    .projet-card h3 {
-      margin: 0;
-      font-size: 16px;
-      color: #2c3e50;
-    }
-
-    .projet-card p {
-      margin: 0;
-      font-size: 14px;
-      color: #666;
-      font-style: italic;
-      line-height: 1.5;
-      flex-grow: 1;
-    }
-
+    .projet-card h3 { margin: 0; font-size: 16px; color: #2c3e50; }
+    .projet-card p { margin: 0; font-size: 14px; color: #666; font-style: italic; line-height: 1.5; flex-grow: 1; }
     .projet-btn {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 8px 16px;
-      background-color: #8000c8;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 14px;
-      text-align: center;
-      transition: background-color 0.2s;
+      display: inline-block; margin-top: 8px; padding: 8px 16px;
+      background-color: #8000c8; color: white; text-decoration: none;
+      border-radius: 5px; font-size: 14px; text-align: center; transition: background-color 0.2s;
     }
-
-    .projet-btn:hover {
-      background-color: #6a00aa;
-    }
+    .projet-btn:hover { background-color: #6a00aa; }
   </style>
 </head>
 <body>
@@ -152,7 +107,7 @@
   <span class="sidebar-title">Navigation</span>
   <a href="index.html">
     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-    <span>Missions en Entreprise</span>
+    <span>Activités Professionnelles</span>
   </a>
   <a href="diplomes.html">
     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
@@ -162,9 +117,13 @@
     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
     <span>E5 Projets Professionnels</span>
   </a>
+  <a href="e6.html">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+    <span>E6 Administration Systèmes et Réseaux</span>
+  </a>
   <a href="veille.html">
     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    <span>Veille Informationelle</span>
+    <span>Veille Informationnelle</span>
   </a>
   <span class="sidebar-title">Autres</span>
   <a href="mon-parcours-pro.html">
@@ -196,17 +155,16 @@
 </nav>
 
 <header id="header">
-  <h1>Projets Professionnels</h1>
+  <h1>E5 Projets Professionnels</h1>
 </header>
 
 <main id="main">
   <section class="card">
-    <h2>Projets Professionnels</h2>
+    <h2>E5 Projets Professionnels</h2>
     <p style="font-style: italic; color: #666;">Découvrez les projets réalisés dans le cadre de mes études et de mes missions en entreprise.</p>
 
     <div class="projets-grid">
 
-      <!-- Asterisk -->
       <div class="projet-card">
         <div class="projet-tag">Projet en cours</div>
         <h3>Mise en place d'une VoIP avec Asterisk</h3>
@@ -214,7 +172,6 @@
         <a href="Projets-Professionnels/asterisk.pdf" target="_blank" class="projet-btn">📄 Voir le projet</a>
       </div>
 
-      <!-- Urmet -->
       <div class="projet-card">
         <div class="projet-tag">Réalisation en entreprise</div>
         <h3>Résolution d'un incident bloquant - Encodeur Urmet</h3>
@@ -222,7 +179,6 @@
         <a href="Projets-Professionnels/urmet.pdf" target="_blank" class="projet-btn">📄 Voir le projet</a>
       </div>
 
-      <!-- DMZ pfSense -->
       <div class="projet-card">
         <div class="projet-tag">Travaux pratiques</div>
         <h3>Mise en place d'une DMZ sécurisée avec pfSense</h3>
@@ -230,15 +186,12 @@
         <a href="Projets-Professionnels/dmz.pdf" target="_blank" class="projet-btn">📄 Voir le projet</a>
       </div>
 
-      <!-- Infrastructure Windows Server -->
       <div class="projet-card">
         <div class="projet-tag">Travaux pratiques</div>
         <h3>Infrastructure Windows Server : AD, services réseau et messagerie</h3>
         <p>Déploiement d'une infrastructure d'entreprise complète sous Windows Server 2022 : routeur NAT, contrôleur de domaine Active Directory (DNS, DHCP, GPO, comptes utilisateurs), second contrôleur de domaine assurant la redondance via le transfert des rôles FSMO, et serveur de messagerie MDaemon avec son client. Une chaîne complète, de l'accès Internet à la boîte mail.</p>
         <a href="Projets-Professionnels/infra-windows.pdf" target="_blank" class="projet-btn">📄 Voir le projet</a>
       </div>
-
-      <!-- Ajouter d'autres projets ici en copiant le bloc projet-card -->
 
     </div>
   </section>
