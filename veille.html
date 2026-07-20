@@ -91,6 +91,79 @@
     .rss-item a:hover { color: #8000c8; }
     .rss-date { font-size: 12px; color: #999; margin-top: 6px; }
     .rss-date::before { content: "📅 "; }
+
+    /* ── SÉLECTION COMMENTÉE ── */
+    .selection-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 36px 0 6px 0;
+    }
+
+    .selection-header h3 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1.1em;
+    }
+
+    .selection-intro {
+      font-size: 13px;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .veille-card {
+      background-color: #f9f4ff;
+      border: 1px solid #e0d0f0;
+      border-left: 4px solid #8000c8;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+
+    .veille-card h4 {
+      margin: 0 0 4px 0;
+      font-size: 15px;
+    }
+
+    .veille-card h4 a {
+      color: #2c3e50;
+      text-decoration: none;
+    }
+
+    .veille-card h4 a:hover {
+      color: #8000c8;
+      text-decoration: underline;
+    }
+
+    .veille-source {
+      font-size: 12px;
+      color: #999;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .veille-summary {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.6;
+      margin: 0 0 12px 0;
+    }
+
+    .veille-takeaway {
+      background-color: white;
+      border-left: 3px solid #3d5166;
+      border-radius: 0 6px 6px 0;
+      padding: 10px 14px;
+      font-size: 14px;
+      color: #2c3e50;
+      line-height: 1.5;
+    }
+
+    .veille-takeaway strong {
+      color: #8000c8;
+    }
   </style>
 </head>
 <body>
@@ -161,6 +234,34 @@
       Dernière mise à jour : <span id="rss-update-time">...</span>
     </p>
     <div id="rss-feed">Chargement du flux...</div>
+
+    <!-- SÉLECTION COMMENTÉE -->
+    <div class="selection-header">
+      <h3>📌 Ma sélection commentée</h3>
+    </div>
+    <p class="selection-intro">Trois articles que j'ai lus et analysés sur le sujet, avec pour chacun ce que j'en retiens pour mon métier.</p>
+
+    <div class="veille-card">
+      <h4><a href="https://monexpertrgpd.substack.com/p/authentification-multifacteur-mfa" target="_blank">Authentification multifacteur : un nouveau standard de sécurité attendu dès 2026</a></h4>
+      <div class="veille-source">Mon Expert RGPD — 20 janvier 2026</div>
+      <p class="veille-summary">L'article explique que la CNIL considère désormais qu'un mot de passe seul ne suffit plus à protéger les données sensibles. Sa recommandation de mars 2024 préconise de combiner au moins deux catégories de facteurs (ce que l'on sait, ce que l'on possède, ce que l'on est), sur la base de l'article 32 du RGPD. À partir de 2026, l'absence de MFA sur des systèmes sensibles pourra être considérée comme un manquement à l'obligation de sécurité lors d'un contrôle.</p>
+      <div class="veille-takeaway"><strong>Ce que je retiens :</strong> la MFA n'est plus seulement une bonne pratique technique, c'est en train de devenir une obligation réglementaire. Dans mon entreprise, on utilise déjà la MFA via Azure, ce qui va justement dans le sens de cette conformité RGPD à venir.</div>
+    </div>
+
+    <div class="veille-card">
+      <h4><a href="https://core.security/blog-cybersecurite/authentification-multi-facteur-mfa/" target="_blank">Authentification multi-facteur (MFA) : bonnes pratiques</a></h4>
+      <div class="veille-source">Core Security — 24 janvier 2026</div>
+      <p class="veille-summary">Cet article détaille les trois catégories de facteurs d'authentification (connaissance, possession, biométrie) et leurs cas d'usage concrets : accès VPN, services cloud, comptes à privilèges. Il souligne qu'activer une MFA permet de bloquer plus de 99% des tentatives de compromission de comptes, même lorsque le mot de passe est déjà connu de l'attaquant. Il liste aussi les erreurs fréquentes, comme l'usage du SMS seul ou l'absence de procédure de secours.</p>
+      <div class="veille-takeaway"><strong>Ce que je retiens :</strong> le chiffre de 99% illustre bien pourquoi la MFA est devenue incontournable. Je fais aussi le lien avec les comptes à privilèges qu'on gère en Active Directory : ce sont justement ceux qu'il faut protéger en priorité.</div>
+    </div>
+
+    <div class="veille-card">
+      <h4><a href="https://itdaily.fr/nouvelles/securite/microsoft-rend-mfa-obligatoire-microsoft-365/" target="_blank">Microsoft rend l'authentification multifacteur obligatoire pour l'administration de Microsoft 365</a></h4>
+      <div class="veille-source">ITdaily — 9 janvier 2026</div>
+      <p class="veille-summary">Microsoft impose la MFA à partir du 9 février 2026 pour tous les administrateurs accédant au centre d'administration Microsoft 365, sur l'ensemble des URL d'administration. Les comptes non protégés seront automatiquement bloqués. Cette mesure s'inscrit dans la continuité d'un déploiement amorcé dès février 2025.</p>
+      <div class="veille-takeaway"><strong>Ce que je retiens :</strong> c'est une actualité très concrète qui montre que même les grands éditeurs imposent désormais la MFA par défaut, sans possibilité de contournement. Ça confirme la tendance de fond des deux autres articles : la MFA devient un prérequis, plus une option.</div>
+    </div>
+
   </section>
 </main>
 
