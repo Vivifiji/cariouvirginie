@@ -91,6 +91,12 @@
     .rss-item a:hover { color: #8000c8; }
     .rss-date { font-size: 12px; color: #999; margin-top: 6px; }
     .rss-date::before { content: "📅 "; }
+    .rss-fallback-msg {
+      font-size: 13px;
+      color: #999;
+      font-style: italic;
+      padding: 10px 0;
+    }
 
     /* ── SÉLECTION COMMENTÉE ── */
     .selection-header {
@@ -273,57 +279,75 @@
     document.getElementById('main').classList.toggle('retracted');
   }
 
-  // Flux RSS — lecture directe du flux Atom de Google Alertes,
-  // sans passer par un service tiers (rss2json) qui peut tomber en panne.
+  // ── Flux RSS ──
+  // Lecture directe du flux Atom de Google Alertes.
+  // Deux méthodes sont essayées l'une après l'autre pour plus de fiabilité,
+  // car les services gratuits tiers peuvent occasionnellement tomber en panne.
   const feedUrl = "https://www.google.com/alerts/feeds/08556610039024231708/8142503863422717196";
-  const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(feedUrl);
+  const proxies = [
+    "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(feedUrl),
+    "https://api.allorigins.win/raw?url=" + encodeURIComponent(feedUrl)
+  ];
 
-  fetch(proxyUrl)
-    .then(response => response.text())
-    .then(str => {
-      const xml = new window.DOMParser().parseFromString(str, "text/xml");
-      if (xml.querySelector("parsererror")) {
-        throw new Error("Erreur de parsing XML");
-      }
-      return xml;
-    })
-    .then(xml => {
-      const now = new Date().toLocaleString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-      document.getElementById("rss-update-time").textContent = now;
+  function renderFeed(xml) {
+    const now = new Date().toLocaleString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    document.getElementById("rss-update-time").textContent = now;
 
-      const entries = Array.from(xml.querySelectorAll("entry")).slice(0, 4);
+    const entries = Array.from(xml.querySelectorAll("entry")).slice(0, 4);
 
-      if (entries.length === 0) {
-        document.getElementById("rss-feed").innerHTML = "Aucun article pour le moment.";
-        return;
-      }
+    if (entries.length === 0) {
+      document.getElementById("rss-feed").innerHTML = "Aucun article pour le moment.";
+      return;
+    }
 
-      let html = "";
-      entries.forEach(entry => {
-        const titleEl = entry.querySelector("title");
-        const title = titleEl ? titleEl.textContent : "Article";
+    let html = "";
+    entries.forEach(entry => {
+      const titleEl = entry.querySelector("title");
+      const title = titleEl ? titleEl.textContent : "Article";
 
-        const linkEl = entry.querySelector("link");
-        const link = linkEl ? linkEl.getAttribute("href") : "#";
+      const linkEl = entry.querySelector("link");
+      const link = linkEl ? linkEl.getAttribute("href") : "#";
 
-        const publishedEl = entry.querySelector("published");
-        const date = publishedEl
-          ? new Date(publishedEl.textContent).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
-          : "Date inconnue";
+      const publishedEl = entry.querySelector("published");
+      const date = publishedEl
+        ? new Date(publishedEl.textContent).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+        : "Date inconnue";
 
-        html += `
-          <div class="rss-item">
-            <a href="${link}" target="_blank">${title}</a>
-            <span class="rss-date">${date}</span>
-          </div>
-        `;
-      });
-      document.getElementById("rss-feed").innerHTML = html;
-    })
-    .catch(() => {
-      document.getElementById("rss-feed").innerHTML = "Erreur de chargement du flux.";
-      document.getElementById("rss-update-time").textContent = "indisponible";
+      html += `
+        <div class="rss-item">
+          <a href="${link}" target="_blank">${title}</a>
+          <span class="rss-date">${date}</span>
+        </div>
+      `;
     });
+    document.getElementById("rss-feed").innerHTML = html;
+  }
+
+  function showFallbackMessage() {
+    document.getElementById("rss-feed").innerHTML =
+      '<p class="rss-fallback-msg">Le flux automatique est temporairement indisponible (service externe Google Alertes). Retrouvez ma veille détaillée ci-dessous, dans la sélection commentée.</p>';
+    document.getElementById("rss-update-time").textContent = "indisponible";
+  }
+
+  function tryProxy(index) {
+    if (index >= proxies.length) {
+      showFallbackMessage();
+      return;
+    }
+    fetch(proxies[index])
+      .then(response => {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.text();
+      })
+      .then(str => {
+        const xml = new window.DOMParser().parseFromString(str, "text/xml");
+        if (xml.querySelector("parsererror")) throw new Error("Erreur de parsing XML");
+        renderFeed(xml);
+      })
+      .catch(() => tryProxy(index + 1));
+  }
+
+  tryProxy(0);
 </script>
 </body>
 </html>
