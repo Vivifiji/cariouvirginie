@@ -172,7 +172,7 @@
     document.getElementById('main').classList.toggle('retracted');
   }
 
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.google.com/alerts/feeds/08556610039024231708/17780416484797136191")
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.google.com%2Falerts%2Ffeeds%2F08556610039024231708%2F8142503863422717196")
     .then(response => response.json())
     .then(data => {
       const now = new Date().toLocaleString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
