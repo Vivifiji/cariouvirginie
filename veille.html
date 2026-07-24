@@ -273,35 +273,27 @@
     document.getElementById('main').classList.toggle('retracted');
   }
 
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.google.com%2Falerts%2Ffeeds%2F08556610039024231708%2F8142503863422717196")
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.google.com%2Falerts%2Ffeeds%2F08556610039024231708%2F17491113011475834942")
     .then(response => response.json())
     .then(data => {
       const now = new Date().toLocaleString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
       document.getElementById("rss-update-time").textContent = now;
       let html = "";
-      
-      // Afficher jusqu'à 12 articles (plusieurs jours d'historique)
-      const items = data.items.slice(0, 12);
-      
-      if (items.length === 0) {
-        html = '<div style="padding: 20px; background-color: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px; color: #856404;"><strong>⚠️ Pas d\'articles récents</strong> — Google Alerts n\'a pas d\'articles à afficher en ce moment. Consultez votre flux Google Alerts directement pour les derniers articles.</div>';
-      } else {
-        items.forEach(item => {
-          const date = item.pubDate
-            ? new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
-            : "Date inconnue";
-          html += `
-            <div class="rss-item">
-              <a href="${item.link}" target="_blank">${item.title}</a>
-              <span class="rss-date">${date}</span>
-            </div>
-          `;
-        });
-      }
+      data.items.slice(0, 4).forEach(item => {
+        const date = item.pubDate
+          ? new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+          : "Date inconnue";
+        html += `
+          <div class="rss-item">
+            <a href="${item.link}" target="_blank">${item.title}</a>
+            <span class="rss-date">${date}</span>
+          </div>
+        `;
+      });
       document.getElementById("rss-feed").innerHTML = html;
     })
     .catch(() => {
-      document.getElementById("rss-feed").innerHTML = "<div style='padding: 20px; background-color: #f8d7da; border-left: 4px solid #dc3545; border-radius: 4px; color: #721c24;'><strong>❌ Erreur de chargement</strong> — Impossible de récupérer le flux Google Alerts. Vérifiez votre connexion Internet ou consultez directement vos alertes Google.</div>";
+      document.getElementById("rss-feed").innerHTML = "Erreur de chargement du flux.";
       document.getElementById("rss-update-time").textContent = "indisponible";
     });
 </script>
