@@ -174,13 +174,6 @@
 
       <div class="projet-card">
         <div class="projet-tag">Travaux pratiques</div>
-        <h3>Déploiement et configuration de GLPI</h3>
-        <p>Déploiement complet d'une infrastructure GLPI sous Linux (Debian 13.6) avec Apache2, PHP et MariaDB. Configuration manuelle de la base de données et mise en place des workflows de tickets. Création d'une base de connaissances avec procédures de dépannage (réseau, matériel, logiciel). Tests avec déploiement d'agents sur une machine Windows et Ubuntu.</p>
-        <a href="Projets-Professionnels/glpi.pdf" target="_blank" class="projet-btn">📄 Voir le projet</a>
-      </div>
-
-      <div class="projet-card">
-        <div class="projet-tag">Travaux pratiques</div>
         <h3>Infrastructure Windows Server : AD, services réseau et messagerie</h3>
         <p>Déploiement d'une infrastructure d'entreprise complète sous Windows Server 2022 : routeur NAT, contrôleur de domaine Active Directory (DNS, DHCP, GPO, comptes utilisateurs), second contrôleur de domaine assurant la redondance via le transfert des rôles FSMO, et serveur de messagerie MDaemon avec son client. Une chaîne complète, de l'accès Internet à la boîte mail.</p>
         <a href="Projets-Professionnels/infra-windows.pdf" target="_blank" class="projet-btn">📄 Voir le projet</a>
@@ -212,6 +205,13 @@
         <h3>Supervision d'infrastructure avec Zabbix et Grafana</h3>
         <p>Mise en place d'une architecture réseau de trois machines virtuelles : un serveur Ubuntu assurant les rôles DHCP, DNS et supervision, ainsi que deux postes clients (Ubuntu et Windows 10). Installation et configuration de Zabbix pour la collecte des métriques systèmes, puis de Grafana connecté à Zabbix pour la création de tableaux de bord de suivi (utilisation CPU et RAM) des différentes machines du réseau.</p>
         <a href="Projets-Professionnels/zabbix_graffana.pdf" target="_blank" class="projet-btn">📄 Voir le projet</a>
+      </div>
+
+      <div class="projet-card">
+        <div class="projet-tag">Travaux pratiques</div>
+        <h3>Répartition de charge avec HAProxy en haute disponibilité</h3>
+        <p>Mise en place de deux serveurs HAProxy (debian_ha et debian_ha2) en haute disponibilité avec Keepalived (protocole VRRP) pour répartir la charge entre deux serveurs web Apache. HAProxy assure la tolérance de panne : si un serveur web tombe, le trafic est automatiquement redirigé. Configuration du NAT (iptables) pour permettre aux serveurs web d'accéder à Internet et redirection de ports SSH. Supervision via la page de statistiques HAProxy. Deux adresses IP virtuelles (192.168.100.10 pour les clients, 192.168.200.254 comme passerelle) basculent automatiquement en cas de panne du serveur principal.</p>
+        <a href="Projets-Professionnels/haproxy.pdf" target="_blank" class="projet-btn">📄 Voir le projet</a>
       </div>
 
     </div>
